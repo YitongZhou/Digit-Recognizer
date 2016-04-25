@@ -3,12 +3,6 @@ library(e1071)
 train =  read.csv("C:/Users/yiton/Desktop/digit/train.csv", colClasses = c("factor",rep("numeric",784)))
 test = read.csv("C:/Users/yiton/Desktop/digit/test.csv", stringsAsFactors=F)
 
-###############
-smalltrain=sample(1:nrow(train), 0.8*nrow(train))
-newtrain <- train[smalltrain,]
-newtest <- train[-smalltrain,]
-train.reduced <- newtrain[,apply(newtrain, 2, var, na.rm=TRUE) != 0]
-
 ##############pca
 pca.result <- prcomp(train[,-1], scale=F, central=F)
 summary(pca.result)  #154 comp for 95%
